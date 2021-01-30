@@ -73,7 +73,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p>$<span id="subtotal">00</span></p>
                     </div>
                 </div>
 
@@ -82,7 +82,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p>$<span id="vat-amount">00</span></p>
                     </div>
                 </div>
                 <hr>
@@ -91,7 +91,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p>$<span id="total">00</span></p>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,8 @@
             ticketNewCount = ticketCount - 1; 
          }
          ticketInput.value = ticketNewCount;
-         var ticketTotal =  ticketNewCount * 150;    
+        
+         totalTicketPrice()   
         }
 
 
@@ -147,8 +148,29 @@
             economyTicketNewCount = economyTicketCount - 1; 
          }
         economyTicketInput.value = economyTicketNewCount;
-         var economyTicketTotal =  economyTicketNewCount * 100;    
+        
+
+         totalTicketPrice()   
         }
+
+        function totalTicketPrice() {
+            
+            var ticketInput = document.getElementById('ticket-count');
+            var ticketCount = parseInt (ticketInput.value);
+
+            var economyTicketInput = document.getElementById('economyTicket-count');
+            var economyTicketCount = parseInt (economyTicketInput.value);
+
+            totalPrice = ticketCount * 150 + economyTicketCount * 100;
+            document.getElementById('subtotal').innerText = totalPrice;
+
+            var vatAmount = totalPrice * 0.1;
+            document.getElementById('vat-amount').innerText = vatAmount;
+
+            var Total = totalPrice + vatAmount;
+            document.getElementById('total').innerText = Total
+        }
+        
         /*
     <script>
         document.getElementById('firstClass-increase').addEventListener('click',function () {
