@@ -32,7 +32,7 @@
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
-                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+                <input class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
             </div>
             <div class="input-group">
                 <label for="">Flying To</label>
@@ -54,7 +54,7 @@
                     <input id="ticket-count" class="inp-style inp-width" type="number" name="" value="1">
                 </div>
                 <div class="plus-minus-btn">
-                    <p><span><button id="firstClass-increase">+</button></span> <span><button id="firstClass-decrease">-</button></span></p>
+                    <p><span><button onclick="firstClassTicketPrice(true)">+</button></span> <span><button onclick="firstClassTicketPrice(false)">-</button></span></p>
                 </div>
             </div>
             
@@ -64,7 +64,7 @@
                     <input id="economyTicket-count" class="inp-style inp-width" type="number" name="" value="1">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span><button id="economy-increase">+</button></span> <span><button id="economy-decrease">-</button></span> </p>
+                    <p> <span><button onclick="economyTicketPrice(true)">+</button></span> <span><button onclick=" economyTicketPrice(false)">-</button></span> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -105,13 +105,9 @@
     </section>
 
     <script>
-        document.getElementById('firstClass-increase').addEventListener('click',function () {
-            firstClassTicketPrice(true)
-         
-        })
-        document.getElementById('firstClass-decrease').addEventListener('click',function () {
-            firstClassTicketPrice(false)
-        })
+            //first class ticket
+            firstClassTicketPrice(true, false);
+       
         function firstClassTicketPrice(isIncrease) {
             var ticketInput = document.getElementById('ticket-count');
          var ticketCount = parseInt(ticketInput.value);
@@ -124,18 +120,10 @@
             ticketNewCount = ticketCount - 1; 
          }
          ticketInput.value = ticketNewCount;
-        
          totalTicketPrice()   
         }
-
-
-        document.getElementById('economy-increase').addEventListener('click',function () {
-            economyTicketPrice(true)
-         
-        })
-        document.getElementById('economy-decrease').addEventListener('click',function () {
-            economyTicketPrice(false)
-        })
+            //economy ticket class
+         economyTicketPrice(true, false);
         function economyTicketPrice(isIncrease) {
             var economyTicketInput = document.getElementById('economyTicket-count');
          var economyTicketCount = parseInt(economyTicketInput.value);
@@ -148,8 +136,6 @@
             economyTicketNewCount = economyTicketCount - 1; 
          }
         economyTicketInput.value = economyTicketNewCount;
-        
-
          totalTicketPrice()   
         }
 
@@ -171,24 +157,6 @@
             document.getElementById('total').innerText = Total
         }
         
-        /*
-    <script>
-        document.getElementById('firstClass-increase').addEventListener('click',function () {
-         var ticketInput = document.getElementById('ticket-count');
-         var ticketCount = parseInt(ticketInput.value);
-         var ticketNewCount = ticketCount + 1;
-         ticketInput.value = ticketNewCount;
-         var ticketTotal =  ticketNewCount * 150;
-         
-        })
-        document.getElementById('firstClass-decrease').addEventListener('click',function () {
-         var ticketInput = document.getElementById('ticket-count');
-         var ticketCount = parseInt(ticketInput.value);
-         var ticketNewCount = ticketCount - 1;
-         ticketInput.value = ticketNewCount;
-         var ticketTotal =  ticketNewCount * 150;
-        })*/
-       
     </script>
 </body>
 
